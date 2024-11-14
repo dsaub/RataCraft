@@ -1,0 +1,4 @@
+name: RataCraft
+version: '1.1-SNAPSHOT'
+main: me.elordenador.ratacraft.RataCraft
+api-version: '1.21'
