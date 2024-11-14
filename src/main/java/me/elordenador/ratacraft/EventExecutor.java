@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class EventExecutor {
     public static void executeRandomEvent(Player player) throws InterruptedException {
-        int random = (int) Math.floor(Math.random() * 20) + 1;
+        int random = (int) Math.floor(Math.random() * 40) + 1;
         switch (random) {
             case 1: rata(player, true); break;
             case 2: diamantes(player); break;
@@ -32,7 +32,20 @@ public class EventExecutor {
             case 18: enderpearl(player); break;
             case 19: creativo(player); break;
             case 20: aventura(player); break;
+            case 21: espectador(player); break;
+            
         }
+    }
+
+    private static void espectador(Player player) {
+        RataCraft rataCraft = RataCraft.instance;
+        broadcast(player.getName() + " ha recibido el evento Espectador");
+        player.setGameMode(GameMode.SPECTATOR);
+
+        Bukkit.getScheduler().runTaskLater(rataCraft, () -> {
+            player.setGameMode(GameMode.SURVIVAL);
+        }, 60 * 20L);
+
     }
 
     private static void broadcast(String message) {

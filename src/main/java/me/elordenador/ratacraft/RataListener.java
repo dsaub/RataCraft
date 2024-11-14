@@ -35,11 +35,4 @@ public class RataListener implements Listener {
         int n = (int) Math.floor(Math.random()*20) + 1;
         if (n == 1) EventExecutor.executeRandomEvent(player);
     }
-
-    @EventHandler
-    public void onMove(PlayerMoveEvent event) throws InterruptedException {
-        Player player = event.getPlayer();
-        int n = (int) Math.floor(Math.random()*1000) + 1;
-        if (n == 1) EventExecutor.executeRandomEvent(player);
-    }
 }
