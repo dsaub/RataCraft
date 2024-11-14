@@ -10,7 +10,7 @@ public final class RataCraft extends JavaPlugin {
         RataListener listener = new RataListener();
 
         getServer().getPluginManager().registerEvents(listener, this);
-        
+
 
 
     }
