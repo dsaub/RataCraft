@@ -2,15 +2,17 @@ package me.elordenador.ratacraft;
 
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class EventExecutor {
     public static void executeRandomEvent(Player player) throws InterruptedException {
-        int random = (int) Math.floor(Math.random() * 20) + 1;
+        int random = (int) Math.floor(Math.random() * 40) + 1;
         switch (random) {
             case 1: rata(player, true); break;
             case 2: diamantes(player); break;
@@ -32,7 +34,258 @@ public class EventExecutor {
             case 18: enderpearl(player); break;
             case 19: creativo(player); break;
             case 20: aventura(player); break;
+            case 21: espectador(player); break;
+            case 22: levitation(player); break;
+            case 23: goodluck(player); break;
+            case 24: tntpillar(player); break;
+            case 25: oneminutedeath(player); break;
+            case 26: bugcerdo(player); break;
+            case 27: instantdeath(player); break;
+            case 28: diamondstellar(player); break;
+            case 29: leatherarmorcursed(player); break;
+            case 30: goldarmorcursed(player); break;
+            case 31: chainmailarmorcursed(player); break;
+            case 32: ironarmorcursed(player); break;
+            case 33: diamondarmorcursed(player); break;
+            case 34: netheritearmorcursed(player); break;
+            case 35: laaldeaparati(player); break;
+            case 36: pillagers(player); break;
+            case 37: explosivezombie(player); break;
+            case 38: friendly_creeper(player); break;
+            case 39: rocket(player); break;
+            case 40: thevoid(player); break;
+
+            
         }
+    }
+
+    private static void thevoid(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Bienvenidos a las backrooms");
+        Location location = player.getLocation();
+        location.setY(0);
+        player.teleport(location);
+    }
+
+    private static void rocket(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Piuuuuum");
+        player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 10*60, 100));
+    }
+
+    private static void friendly_creeper(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Dale cariño");
+        Location location = player.getLocation();
+        World world = player.getWorld();
+        Creeper creeper = (Creeper) world.spawnEntity(location, EntityType.CREEPER);
+        creeper.setCustomName("CREEPER AMISTOSO");
+    }
+
+    private static void explosivezombie(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Uups");
+        Location location = player.getLocation();
+        World world = player.getWorld();
+        Zombie zombie = (Zombie) world.spawnEntity(location, EntityType.ZOMBIE);
+        zombie.setCustomName("REVENTON");
+    }
+
+    private static void pillagers(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Oops");
+        Location location = player.getLocation();
+        World world = player.getWorld();
+        for (int i = 0; i < 20; i++) {
+            world.spawnEntity(location, EntityType.PILLAGER);
+        }
+    }
+
+    private static void laaldeaparati(Player player) {
+        broadcast(player.getName() + " ha recibido el evento La aldea para ti");
+        Location location = player.getLocation();
+        World world = player.getWorld();
+        for (int i = 0; i < 20; i++) {
+            world.spawnEntity(location, EntityType.VILLAGER);
+        }
+    }
+
+    private static void netheritearmorcursed(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Armor maldita de netherite");
+        ItemStack HELMET = new ItemStack(Material.NETHERITE_HELMET);
+        ItemStack CHESTPLATE = new ItemStack(Material.NETHERITE_CHESTPLATE);
+        ItemStack LEGGINGS = new ItemStack(Material.NETHERITE_LEGGINGS);
+        ItemStack BOOTS = new ItemStack(Material.NETHERITE_BOOTS);
+        HELMET.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        CHESTPLATE.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        LEGGINGS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        BOOTS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+
+        PlayerInventory inventory = (PlayerInventory) player.getInventory();
+        inventory.setHelmet(HELMET);
+        inventory.setChestplate(CHESTPLATE);
+        inventory.setLeggings(LEGGINGS);
+        inventory.setBoots(BOOTS);
+
+    }
+
+    private static void diamondarmorcursed(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Armor maldita de diamante");
+        ItemStack HELMET = new ItemStack(Material.DIAMOND_HELMET);
+        ItemStack CHESTPLATE = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        ItemStack LEGGINGS = new ItemStack(Material.DIAMOND_LEGGINGS);
+        ItemStack BOOTS = new ItemStack(Material.DIAMOND_BOOTS);
+        HELMET.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        CHESTPLATE.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        LEGGINGS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        BOOTS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+
+        PlayerInventory inventory = (PlayerInventory) player.getInventory();
+        inventory.setHelmet(HELMET);
+        inventory.setChestplate(CHESTPLATE);
+        inventory.setLeggings(LEGGINGS);
+        inventory.setBoots(BOOTS);
+    }
+
+    private static void ironarmorcursed(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Armor maldita de hierro");
+        ItemStack HELMET = new ItemStack(Material.IRON_HELMET);
+        ItemStack CHESTPLATE = new ItemStack(Material.IRON_CHESTPLATE);
+        ItemStack LEGGINGS = new ItemStack(Material.IRON_LEGGINGS);
+        ItemStack BOOTS = new ItemStack(Material.IRON_BOOTS);
+        HELMET.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        CHESTPLATE.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        LEGGINGS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        BOOTS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+
+        PlayerInventory inventory = (PlayerInventory) player.getInventory();
+        inventory.setHelmet(HELMET);
+        inventory.setChestplate(CHESTPLATE);
+        inventory.setLeggings(LEGGINGS);
+        inventory.setBoots(BOOTS);
+    }
+
+    private static void chainmailarmorcursed(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Armor maldita de chain");
+        ItemStack HELMET = new ItemStack(Material.CHAINMAIL_HELMET);
+        ItemStack CHESTPLATE = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
+        ItemStack LEGGINGS = new ItemStack(Material.CHAINMAIL_LEGGINGS);
+        ItemStack BOOTS = new ItemStack(Material.CHAINMAIL_BOOTS);
+        HELMET.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        CHESTPLATE.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        LEGGINGS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        BOOTS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+
+        PlayerInventory inventory = (PlayerInventory) player.getInventory();
+        inventory.setHelmet(HELMET);
+        inventory.setChestplate(CHESTPLATE);
+        inventory.setLeggings(LEGGINGS);
+        inventory.setBoots(BOOTS);
+    }
+
+    private static void goldarmorcursed(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Armor maldita de oro");
+        ItemStack HELMET = new ItemStack(Material.GOLDEN_HELMET);
+        ItemStack CHESTPLATE = new ItemStack(Material.GOLDEN_CHESTPLATE);
+        ItemStack LEGGINGS = new ItemStack(Material.GOLDEN_LEGGINGS);
+        ItemStack BOOTS = new ItemStack(Material.GOLDEN_BOOTS);
+        HELMET.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        CHESTPLATE.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        LEGGINGS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        BOOTS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+
+        PlayerInventory inventory = (PlayerInventory) player.getInventory();
+        inventory.setHelmet(HELMET);
+        inventory.setChestplate(CHESTPLATE);
+        inventory.setLeggings(LEGGINGS);
+        inventory.setBoots(BOOTS);
+    }
+
+    private static void leatherarmorcursed(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Armor maldita de cuero");
+        ItemStack HELMET = new ItemStack(Material.LEATHER_HELMET);
+        ItemStack CHESTPLATE = new ItemStack(Material.LEATHER_CHESTPLATE);
+        ItemStack LEGGINGS = new ItemStack(Material.LEATHER_LEGGINGS);
+        ItemStack BOOTS = new ItemStack(Material.LEATHER_BOOTS);
+        HELMET.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        CHESTPLATE.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        LEGGINGS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+        BOOTS.addEnchantment(Enchantment.BINDING_CURSE, 1);
+
+        PlayerInventory inventory = (PlayerInventory) player.getInventory();
+        inventory.setHelmet(HELMET);
+        inventory.setChestplate(CHESTPLATE);
+        inventory.setLeggings(LEGGINGS);
+        inventory.setBoots(BOOTS);
+    }
+
+    private static void diamondstellar(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Pilares de la fortuna");
+        Location location = player.getLocation();
+        for (int x = -1; x <= 1; x++) {
+            for (int y = 0; y <= 100; y++) {
+                for (int z = -1; z <= 1; z++) {
+                    Block block = player.getWorld().getBlockAt(location.blockX()+x, location.blockY()+y - 1, location.blockZ() + z );
+                    block.setType(Material.DIAMOND);
+                }
+            }
+
+        }
+    }
+
+    private static void instantdeath(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Mira abajo");
+        player.setHealth(0.0);
+    }
+
+    private static void bugcerdo(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Coche Bug");
+        World world = player.getWorld();
+        Location location = player.getLocation();
+
+        Pig cerdo = (Pig) world.spawnEntity(location, EntityType.PIG);
+        cerdo.addPassenger(player);
+        cerdo.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 2*20, 100));
+    }
+
+
+    private static void oneminutedeath(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Vas a morir en un minuto");
+        RataCraft rataCraft = RataCraft.instance;
+        Bukkit.getScheduler().runTaskLater(rataCraft, () -> {
+            player.setHealth(0.0);
+        }, 60 * 20L);
+    }
+
+    private static void tntpillar(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Pilares de la (no)Fortuna");
+        Location location = player.getLocation();
+        for (int x = -1; x <= 1; x++) {
+            for (int y = 0; y <= 100; y++) {
+                for (int z = -1; z <= 1; z++) {
+                    Block block = player.getWorld().getBlockAt(location.blockX()+x, location.blockY()+y - 1, location.blockZ() + z );
+                    block.setType(Material.TNT);
+                }
+            }
+
+        }
+    }
+
+    private static void goodluck(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Buena Suerte");
+        player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*60, 100));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20*60, 100));
+    }
+
+    private static void levitation(Player player) {
+        broadcast(player.getName() + " ha recibido el evento Levitación");
+        player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 20*60, 1));
+    }
+
+    private static void espectador(Player player) {
+        RataCraft rataCraft = RataCraft.instance;
+        broadcast(player.getName() + " ha recibido el evento Espectador");
+        player.setGameMode(GameMode.SPECTATOR);
+
+        Bukkit.getScheduler().runTaskLater(rataCraft, () -> {
+            player.setGameMode(GameMode.SURVIVAL);
+        }, 60 * 20L);
+
     }
 
     private static void broadcast(String message) {
