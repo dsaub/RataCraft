@@ -221,7 +221,7 @@ public class EventExecutor {
             for (int y = 0; y <= 100; y++) {
                 for (int z = -1; z <= 1; z++) {
                     Block block = player.getWorld().getBlockAt(location.blockX()+x, location.blockY()+y - 1, location.blockZ() + z );
-                    block.setType(Material.DIAMOND);
+                    block.setType(Material.DIAMOND_BLOCK);
                 }
             }
 
@@ -388,7 +388,10 @@ public class EventExecutor {
         broadcast(player.getName() + " ha recibido el evento Figure");
         Location location = player.getLocation();
         World world = player.getWorld();
-        world.spawnEntity(location, EntityType.WARDEN);
+        Warden warden = (Warden) world.spawnEntity(location, EntityType.WARDEN);
+        Bukkit.getScheduler().runTaskLater(RataCraft.instance, () -> {
+            warden.setHealth(0);
+        }, 60*20L);
     }
 
     private static void alfa(Player player) {
@@ -400,6 +403,9 @@ public class EventExecutor {
             zombie.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 3000, 8));
             zombie.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 3000, 8));
             zombie.setCustomName("Alfa");
+            Bukkit.getScheduler().runTaskLater(RataCraft.instance, () -> {
+                zombie.setHealth(0);
+            }, 60*20L);
 
         }
     }
@@ -413,6 +419,9 @@ public class EventExecutor {
             zombie.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 3000, 4));
             zombie.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 3000, 4));
             zombie.setCustomName("Colerico");
+            Bukkit.getScheduler().runTaskLater(RataCraft.instance, () -> {
+                zombie.setHealth(0);
+            }, 60*20L);
 
         }
     }
@@ -426,6 +435,9 @@ public class EventExecutor {
             zombie.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 3000, 2));
             zombie.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 3000, 2));
             zombie.setCustomName("Virico");
+            Bukkit.getScheduler().runTaskLater(RataCraft.instance, () -> {
+                zombie.setHealth(0);
+            }, 60*20L);
 
         }
     }
@@ -441,18 +453,18 @@ public class EventExecutor {
     private static void supersonic(Player player) throws InterruptedException {
         RataCraft rataCraft = RataCraft.instance;
         broadcast(player.getName() + " ha recibido el evento Super Sonic");
-        player.setFlying(true);
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 60, 100));
+        player.setAllowFlight(true);
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 60*20, 100));
 
         Bukkit.getScheduler().runTaskLater(rataCraft, () -> {
-            player.setFlying(false);
+            player.setAllowFlight(false);
         }, 60 * 20L);
 
     }
 
     private static void sonic(Player player) {
         broadcast(player.getName() + " ha recibido el evento Sonic");
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 60, 10));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 60*20, 10));
     }
 
     private static void nuclear(Player player) {
@@ -502,5 +514,8 @@ public class EventExecutor {
         rata.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 3000, 100));
         rata.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 3000, 2));
         rata.setCustomName("RATA");
+        Bukkit.getScheduler().runTaskLater(RataCraft.instance, () -> {
+            rata.setHealth(0);
+        }, 60*20L);
     }
 }
